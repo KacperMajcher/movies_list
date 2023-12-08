@@ -1,19 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_list/features/data/models/movie.dart';
+import 'package:movies_list/features/data/repositories/movies_repository.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeState());
+  HomeCubit(this._moviesRepository) : super(const HomeState());
+
+  final MoviesRepository _moviesRepository;
 
   //function retrieves an movie model and emits it as a state.
-  Future<void> getMoviesList() async {
-    final movieModel = MovieModel(
-      page: 'assets/other/test.png',
-      title: 'Arcane',
-      description:
-          'Two sisters fight on opposite sides in the war between the cities of Piltover and Zaun, where magical technologies and conflicting beliefs clash.',
-    );
+  Future<void> getMoviesModel() async {
+    emit(const HomeState());
+    final movieModel = await _moviesRepository.getMoviesList();
+
     emit(
       HomeState(
         movieModel: movieModel,

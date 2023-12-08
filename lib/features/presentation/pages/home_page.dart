@@ -14,15 +14,15 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         final movieModel = state.movieModel; //movieModel from cubit
         return Scaffold(
-          backgroundColor: const Color.fromARGB(231, 22, 21, 21),
+          backgroundColor: const Color(0xE7161515),
           appBar: appBar(),
           body: ListView(
             children: [
               MovieCard(
                   movieModel: MovieModel(
-                      page: movieModel!.page,
-                      title: movieModel.title,
-                      description: movieModel.description))
+                      page: movieModel?.page ?? '',
+                      title: movieModel?.title ?? '',
+                      description: movieModel?.description ?? ''))
             ],
           ),
         );
