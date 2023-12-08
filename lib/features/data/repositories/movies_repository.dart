@@ -1,12 +1,13 @@
+import 'package:movies_list/features/data/data_sources/movies_remote_data_source.dart';
 import 'package:movies_list/features/data/models/movie.dart';
 
 class MoviesRepository {
-  Future<MovieModel> getMoviesList() async {
-    return MovieModel(
-      page: 'assets/other/test.png',
-      title: 'Arcane',
-      description:
-          'Two sisters fight on opposite sides in the war between the cities of Piltover and Zaun, where magical technologies and conflicting beliefs clash.',
-    );
+  MoviesRepository({required this.remoteDataSource});
+
+  final MoviesMockedDataSource remoteDataSource;
+
+  Future<List<MovieModel>> getArtistModels() async {
+    final movies = await remoteDataSource.getMovies();
+    return movies;
   }
 }

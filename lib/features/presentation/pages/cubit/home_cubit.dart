@@ -10,9 +10,9 @@ class HomeCubit extends Cubit<HomeState> {
   final MoviesRepository _moviesRepository;
 
   //function retrieves an movie model and emits it as a state.
-  Future<void> getMoviesModel() async {
+  Future<void> getMoviesModels() async {
     emit(const HomeState());
-    final movieModel = await _moviesRepository.getMoviesList();
+    final movieModel = await _moviesRepository.getArtistModels();
 
     emit(
       HomeState(
