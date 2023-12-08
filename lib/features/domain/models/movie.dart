@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'movie.g.dart';
+
+@JsonSerializable()
 class MovieModel {
   MovieModel({
     required this.id,
@@ -7,17 +12,18 @@ class MovieModel {
     required this.description,
   });
 
-  final String id;
+  final int id;
+  @JsonKey(name: 'backdrop_path')
   final String cover;
+  @JsonKey(name: 'original_title')
   final String title;
+  @JsonKey(name: 'release_date')
   final String release;
+  @JsonKey(name: 'overview')
   final String description;
 
-  //conventer Map<String, dynamic> to MovieModel
-  MovieModel.fromJson(Map<String, dynamic> json)
-      : id = json['id'].toString(),
-        cover = json['backdrop_path'],
-        title = json['original_title'],
-        release = json['release_date'],
-        description = json['overview'];
+  factory MovieModel.fromJson(Map<String, dynamic> json) =>
+      _$MovieModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MovieModelToJson(this);
 }
