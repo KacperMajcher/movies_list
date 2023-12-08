@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_list/features/data/models/movie.dart';
+import 'package:movies_list/features/domain/models/movie.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/cover.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/description.dart';
+import 'package:movies_list/features/presentation/widgets/card/elements/movie_release.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/movie_title.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/play_button.dart';
 
@@ -33,7 +34,7 @@ class MovieCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Cover(
-                    page: movieModel.page,
+                    cover: movieModel.cover,
                     borderRadiusValue: 12,
                   ),
                   const SizedBox(height: 13),
@@ -48,12 +49,17 @@ class MovieCard extends StatelessWidget {
                           title: movieModel.title,
                           fontSize: 25,
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 1),
+                        MovieRelease(
+                          release: movieModel.release,
+                          fontSize: 12,
+                        ),
+                        const SizedBox(height: 5),
                         Description(
                             description: movieModel.description,
                             textColor: const Color.fromARGB(255, 165, 153, 153),
                             fontSize: 14),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             const PlayButton(

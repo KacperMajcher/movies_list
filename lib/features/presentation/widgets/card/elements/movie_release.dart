@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class MovieTitle extends StatelessWidget {
-  const MovieTitle({
+class MovieRelease extends StatelessWidget {
+  const MovieRelease({
     super.key,
-    required this.title,
+    required this.release,
     required this.fontSize,
   });
 
-  final String title;
+  final String release;
   final double fontSize;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      title,
-      style: TextStyle(
+      release,
+      style: GoogleFonts.openSans(
         fontSize: fontSize,
         color: Colors.white,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w400,
         letterSpacing: 1,
       ),
-      overflow: TextOverflow.ellipsis,
     );
   }
 }

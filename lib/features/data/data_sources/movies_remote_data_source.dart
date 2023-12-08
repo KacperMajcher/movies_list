@@ -1,24 +1,9 @@
-class MoviesMockedDataSource {
-  Future<List<Map<String, dynamic>>?> getMovies() async {
-    return [
-      {
-        'page': 'assets/other/test.png',
-        'title': 'Arcane',
-        'description':
-            'Two sisters fight on opposite sides in the war between the cities of Piltover and Zaun; where magical technologies and conflicting beliefs clash.'
-      },
-      {
-        'page': 'assets/other/test.png',
-        'title': 'Spider-Man',
-        'description':
-            'After getting bitten by a genetically enhanced spider; shy teen Peter Parker develops web-slinging; wall-climbing powers and meets a dangerous new foe.',
-      },
-      {
-        'page': 'assets/other/test.png',
-        'title': 'Lucifer',
-        'description':
-            'The bored devil abandons his role as the ruler of hell and moves to Los Angeles; where he opens a nightclub and begins to be accompanied by a detective from the homicide department.',
-      }
-    ];
+import 'package:dio/dio.dart';
+
+class MoviesRemoteDioDataSource {
+  Future<Map<String, dynamic>?> getMoviesData() async {
+    final response = await Dio().get<Map<String, dynamic>>(
+        'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=bcb3e9eb9e85d0415e3c55f0d8339031');
+    return response.data;
   }
 }
