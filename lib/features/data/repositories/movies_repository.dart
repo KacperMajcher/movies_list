@@ -6,8 +6,14 @@ class MoviesRepository {
 
   final MoviesMockedDataSource remoteDataSource;
 
+  //retrieves a list of movie models from a remote data source and converts them from JSON format to Dart objects
+
   Future<List<MovieModel>> getArtistModels() async {
-    final movies = await remoteDataSource.getMovies();
-    return movies;
+    final json = await remoteDataSource.getMovies();
+    if (json == null) {
+      return [];
+    }
+    //converter
+    return json.map((item) => MovieModel.fromJson(item)).toList();
   }
 }
