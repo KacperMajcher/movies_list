@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_list/core/enums.dart';
 import 'package:movies_list/features/data/models/movie.dart';
 import 'package:movies_list/features/data/repositories/movies_repository.dart';
 
@@ -12,12 +13,21 @@ class HomeCubit extends Cubit<HomeState> {
   //function retrieves an movie model and emits it as a state.
   Future<void> getMoviesModels() async {
     emit(const HomeState());
-    final movieModel = await _moviesRepository.getArtistModels();
+    try {
+      final movieModel = await _moviesRepository.getArtistModels();
 
-    emit(
-      HomeState(
-        movieModel: movieModel,
-      ),
-    );
+      emit(
+        HomeState(
+          movieModel: movieModel,
+        ),
+      );
+    } catch (error) {
+      emit(
+        HomeState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }
