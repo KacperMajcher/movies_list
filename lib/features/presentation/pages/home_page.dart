@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_list/features/data/models/movie.dart';
 import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
 import 'package:movies_list/features/presentation/widgets/card/movie_card.dart';
 
@@ -11,27 +12,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
+        final movieModel = state.movieModel; //movieModel from cubit
         return Scaffold(
           backgroundColor: const Color.fromARGB(231, 22, 21, 21),
           appBar: appBar(),
           body: ListView(
             children: [
               MovieCard(
-                  page: state.page,
-                  title: state.title,
-                  description: state.description),
-              MovieCard(
-                  page: state.page,
-                  title: state.title,
-                  description: state.description),
-              MovieCard(
-                  page: state.page,
-                  title: state.title,
-                  description: state.description),
-              MovieCard(
-                  page: state.page,
-                  title: state.title,
-                  description: state.description),
+                  movieModel: MovieModel(
+                      page: movieModel!.page,
+                      title: movieModel.title,
+                      description: movieModel.description))
             ],
           ),
         );

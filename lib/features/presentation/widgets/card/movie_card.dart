@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_list/features/data/models/movie.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/cover.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/description.dart';
 import 'package:movies_list/features/presentation/widgets/card/elements/movie_title.dart';
@@ -7,14 +8,10 @@ import 'package:movies_list/features/presentation/widgets/card/elements/play_but
 class MovieCard extends StatelessWidget {
   const MovieCard({
     super.key,
-    required this.page,
-    required this.title,
-    required this.description,
+    required this.movieModel,
   });
 
-  final String page;
-  final String title;
-  final String description;
+  final MovieModel movieModel;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +33,7 @@ class MovieCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Cover(
-                    page: page,
+                    page: movieModel.page,
                     borderRadiusValue: 12,
                   ),
                   const SizedBox(height: 13),
@@ -48,12 +45,12 @@ class MovieCard extends StatelessWidget {
                       children: [
                         const SizedBox(width: 10),
                         MovieTitle(
-                          title: title,
+                          title: movieModel.title,
                           fontSize: 25,
                         ),
                         const SizedBox(height: 8),
                         Description(
-                            description: description,
+                            description: movieModel.description,
                             textColor: const Color.fromARGB(255, 165, 153, 153),
                             fontSize: 14),
                         const SizedBox(height: 30),

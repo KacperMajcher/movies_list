@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) =>
+          HomeCubit()..getMoviesList(), //provides a list from cubit
       child: const MaterialApp(
         home: HomePage(),
         debugShowCheckedModeBanner: false,
