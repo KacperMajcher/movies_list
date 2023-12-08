@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies_list/features/presentation/widgets/movies_list.dart';
+import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
+import 'package:movies_list/features/presentation/widgets/card/movie_card.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  final movies = MoviesList.moviesList;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(231, 22, 21, 21),
-      appBar: appBar(),
-      body: ListView(
-        children: [...movies],
-      ),
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: const Color.fromARGB(231, 22, 21, 21),
+          appBar: appBar(),
+          body: ListView(
+            children: [
+              MovieCard(
+                  page: state.page,
+                  title: state.title,
+                  description: state.description),
+              MovieCard(
+                  page: state.page,
+                  title: state.title,
+                  description: state.description),
+              MovieCard(
+                  page: state.page,
+                  title: state.title,
+                  description: state.description),
+              MovieCard(
+                  page: state.page,
+                  title: state.title,
+                  description: state.description),
+            ],
+          ),
+        );
+      },
     );
   }
 }
