@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if (state.status == Status.error) {
           final errorMessage = state.errorMessage ?? 'Unkown error';
@@ -22,23 +22,21 @@ class HomePage extends StatelessWidget {
           );
         }
       },
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          return Scaffold(
-            backgroundColor: const Color(0xE7161515),
-            appBar: appBar(),
-            body: ListView(
-              children: [
-                for (final movieModel in state
-                    .movieModel) //For each movie model in the mocked data source, it creates a movie card on the home page
-                  MovieCard(
-                    movieModel: movieModel,
-                  ),
-              ],
-            ),
-          );
-        },
-      ),
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: const Color(0xE7161515),
+          appBar: appBar(),
+          body: ListView(
+            children: [
+              for (final movieModel in state
+                  .movieModel) //For each movie model in the mocked data source, it creates a movie card on the home page
+                MovieCard(
+                  movieModel: movieModel,
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
