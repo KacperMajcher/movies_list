@@ -1,17 +1,23 @@
 import 'package:movies_list/features/data/data_sources/movies_remote_data_source.dart';
+import 'package:movies_list/features/data/entities/api_dto.dart';
 import 'package:movies_list/features/domain/models/movie.dart';
 
 class MoviesRepository {
   MoviesRepository({required this.remoteDataSource});
 
-  final MoviesRemoteDioDataSource remoteDataSource;
+  final MoviesRemoteRetrofitDataSource remoteDataSource;
 
   Future<List<MovieModel>> getMoviesData() async {
-    final json = await remoteDataSource.getMoviesData();
-    if (json == null) {
-      return [];
-    }
-    //converter
-    return (json['results'] as List).map((item) => MovieModel.fromJson(item as Map<String, dynamic>)).toList();
+    final MovieResponseDto response = await remoteDataSource.getMoviesData();
+    final List<MovieModel> movies = response.results.map((movieDto) {
+      return MovieModel(
+        id: movieDto.id.toString(),
+        cover: movieDto.backdropPath,
+        title: movieDto.originalTitle,
+        release: movieDto.releaseDate,
+        description: movieDto.overview,
+      );
+    }).toList();
+    return movies;
   }
 }

@@ -20,7 +20,7 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MovieModel {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String get cover => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_title')
@@ -43,7 +43,7 @@ abstract class $MovieModelCopyWith<$Res> {
       _$MovieModelCopyWithImpl<$Res, MovieModel>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'backdrop_path') String cover,
       @JsonKey(name: 'original_title') String title,
       @JsonKey(name: 'release_date') String release,
@@ -73,7 +73,7 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       cover: null == cover
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$MovieModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'backdrop_path') String cover,
       @JsonKey(name: 'original_title') String title,
       @JsonKey(name: 'release_date') String release,
@@ -131,7 +131,7 @@ class __$$MovieModelImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       cover: null == cover
           ? _value.cover
           : cover // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ class _$MovieModelImpl implements _MovieModel {
       _$$MovieModelImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   @JsonKey(name: 'backdrop_path')
   final String cover;
@@ -219,7 +219,7 @@ class _$MovieModelImpl implements _MovieModel {
 
 abstract class _MovieModel implements MovieModel {
   const factory _MovieModel(
-          {required final int id,
+          {required final String id,
           @JsonKey(name: 'backdrop_path') required final String cover,
           @JsonKey(name: 'original_title') required final String title,
           @JsonKey(name: 'release_date') required final String release,
@@ -230,7 +230,7 @@ abstract class _MovieModel implements MovieModel {
       _$MovieModelImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   @JsonKey(name: 'backdrop_path')
   String get cover;

@@ -8,7 +8,7 @@ part of 'movie.dart';
 
 _$MovieModelImpl _$$MovieModelImplFromJson(Map<String, dynamic> json) =>
     _$MovieModelImpl(
-      id: json['id'] as int,
+      id: json['id'] as String,
       cover: json['backdrop_path'] as String,
       title: json['original_title'] as String,
       release: json['release_date'] as String,
