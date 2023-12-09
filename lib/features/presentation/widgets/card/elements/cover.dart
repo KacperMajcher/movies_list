@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Cover extends StatelessWidget {
-  const Cover({super.key, required this.page, required this.borderRadiusValue});
+  const Cover({super.key, required this.cover, required this.borderRadiusValue});
 
-  final String page;
+  final String cover;
   final double borderRadiusValue;
 
   @override
@@ -16,8 +16,8 @@ class Cover extends StatelessWidget {
           topRight: Radius.circular(borderRadiusValue),
         ),
         image: DecorationImage(
-          image: AssetImage(page),
-          fit: BoxFit.fill,
+          image: NetworkImage('https://image.tmdb.org/t/p/w500$cover'),
+          fit: BoxFit.cover,
         ),
       ),
       child: Stack(

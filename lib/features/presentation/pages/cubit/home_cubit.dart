@@ -1,23 +1,35 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_list/features/data/models/movie.dart';
-import 'package:movies_list/features/data/repositories/movies_repository.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movies_list/core/enums.dart';
+import 'package:movies_list/features/domain/models/movie.dart';
+import 'package:movies_list/features/domain/repositories/movies_repository.dart';
 
 part 'home_state.dart';
+part 'home_cubit.freezed.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._moviesRepository) : super(const HomeState());
+  HomeCubit({required this.moviesRepository}) : super(HomeState());
 
-  final MoviesRepository _moviesRepository;
+  final MoviesRepository moviesRepository;
 
   //function retrieves an movie model and emits it as a state.
   Future<void> getMoviesModels() async {
-    emit(const HomeState());
-    final movieModel = await _moviesRepository.getArtistModels();
+    emit(HomeState());
+    try {
+      final movieModel = await moviesRepository.getMoviesData();
 
-    emit(
-      HomeState(
-        movieModel: movieModel,
-      ),
-    );
+      emit(
+        HomeState(
+          movieModel: movieModel,
+        ),
+      );
+    } catch (error) {
+      emit(
+        HomeState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }

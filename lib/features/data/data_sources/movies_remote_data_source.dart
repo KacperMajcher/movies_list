@@ -1,26 +1,18 @@
-import 'package:movies_list/features/data/models/movie.dart';
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+import 'package:movies_list/features/data/entities/api_dto.dart';
+import 'package:retrofit/retrofit.dart';
 
-class MoviesMockedDataSource {
-  Future<List<MovieModel>> getMovies() async {
-    return [
-      MovieModel(
-        page: 'assets/other/test.png',
-        title: 'Arcane',
-        description:
-            'Two sisters fight on opposite sides in the war between the cities of Piltover and Zaun, where magical technologies and conflicting beliefs clash.',
-      ),
-      MovieModel(
-        page: 'assets/other/test.png',
-        title: 'Spider-Man',
-        description:
-            'After getting bitten by a genetically enhanced spider, shy teen Peter Parker develops web-slinging, wall-climbing powers and meets a dangerous new foe.',
-      ),
-      MovieModel(
-        page: 'assets/other/test.png',
-        title: 'Lucifer',
-        description:
-            'The bored devil abandons his role as the ruler of hell and moves to Los Angeles, where he opens a nightclub and begins to be accompanied by a detective from the homicide department.',
-      ),
-    ];
-  }
+part 'movies_remote_data_source.g.dart';
+
+@injectable
+@RestApi()
+abstract class MoviesRemoteRetrofitDataSource {
+  @factoryMethod
+  factory MoviesRemoteRetrofitDataSource(Dio dio) =
+      _MoviesRemoteRetrofitDataSource;
+
+  @GET(
+      '/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&api_key=bcb3e9eb9e85d0415e3c55f0d8339031')
+  Future<MovieResponseDto> getMoviesData();
 }
