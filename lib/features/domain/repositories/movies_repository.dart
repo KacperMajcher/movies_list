@@ -1,9 +1,7 @@
-import 'package:injectable/injectable.dart';
 import 'package:movies_list/features/data/data_sources/movies_remote_data_source.dart';
 import 'package:movies_list/features/data/entities/api_dto.dart';
 import 'package:movies_list/features/domain/models/movie.dart';
 
-@injectable
 class MoviesRepository {
   MoviesRepository({required this.remoteDataSource});
 
