@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:movies_list/features/data/entities/api_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'movies_remote_data_source.g.dart';
 
-@RestApi(baseUrl: 'https://api.themoviedb.org/3/discover')
+@injectable
+@RestApi()
 abstract class MoviesRemoteRetrofitDataSource {
-  factory MoviesRemoteRetrofitDataSource(Dio dio, {String baseUrl}) =
+  @factoryMethod
+  factory MoviesRemoteRetrofitDataSource(Dio dio) =
       _MoviesRemoteRetrofitDataSource;
 
   @GET(

@@ -13,9 +13,7 @@ class _MoviesRemoteRetrofitDataSource
   _MoviesRemoteRetrofitDataSource(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'https://api.themoviedb.org/3/discover';
-  }
+  });
 
   final Dio _dio;
 
