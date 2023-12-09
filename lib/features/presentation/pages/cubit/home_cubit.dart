@@ -8,15 +8,15 @@ part 'home_state.dart';
 part 'home_cubit.freezed.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._moviesRepository) : super( HomeState());
+  HomeCubit({required this.moviesRepository}) : super(HomeState());
 
-  final MoviesRepository _moviesRepository;
+  final MoviesRepository moviesRepository;
 
   //function retrieves an movie model and emits it as a state.
   Future<void> getMoviesModels() async {
-    emit( HomeState());
+    emit(HomeState());
     try {
-      final movieModel = await _moviesRepository.getMoviesData();
+      final movieModel = await moviesRepository.getMoviesData();
 
       emit(
         HomeState(
