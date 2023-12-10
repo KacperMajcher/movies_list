@@ -13,6 +13,7 @@ _$MovieModelImpl _$$MovieModelImplFromJson(Map<String, dynamic> json) =>
       title: json['original_title'] as String,
       release: json['release_date'] as String,
       description: json['overview'] as String,
+      posterPath: json['poster_path'] as String,
     );
 
 Map<String, dynamic> _$$MovieModelImplToJson(_$MovieModelImpl instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$MovieModelImplToJson(_$MovieModelImpl instance) =>
       'original_title': instance.title,
       'release_date': instance.release,
       'overview': instance.description,
+      'poster_path': instance.posterPath,
     };

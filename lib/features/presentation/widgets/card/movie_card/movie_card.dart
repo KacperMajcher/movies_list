@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies_list/features/domain/models/movie.dart';
-import 'package:movies_list/features/presentation/widgets/card/elements/cover.dart';
-import 'package:movies_list/features/presentation/widgets/card/elements/description.dart';
-import 'package:movies_list/features/presentation/widgets/card/elements/movie_release.dart';
-import 'package:movies_list/features/presentation/widgets/card/elements/movie_title.dart';
-import 'package:movies_list/features/presentation/widgets/card/elements/play_button.dart';
+import 'package:movies_list/features/presentation/widgets/card/movie_card/elements/cover.dart';
+import 'package:movies_list/features/presentation/widgets/card/shared_elements/description.dart';
+import 'package:movies_list/features/presentation/widgets/card/shared_elements/movie_release.dart';
+import 'package:movies_list/features/presentation/widgets/card/shared_elements/movie_title.dart';
+import 'package:movies_list/features/presentation/widgets/card/shared_elements/play_button.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
@@ -58,7 +58,8 @@ class MovieCard extends StatelessWidget {
                         Description(
                             description: movieModel.description,
                             textColor: const Color.fromARGB(255, 165, 153, 153),
-                            fontSize: 14),
+                            fontSize: 14,
+                            maxLines: 3),
                         const SizedBox(height: 20),
                         Row(
                           children: [

@@ -6,17 +6,19 @@ class Description extends StatelessWidget {
       {super.key,
       required this.description,
       required this.textColor,
-      required this.fontSize});
+      required this.fontSize,
+      required this.maxLines});
 
   final String description;
   final Color textColor;
   final double fontSize;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       description,
-      maxLines: 3,
+      maxLines: maxLines,
       style: GoogleFonts.openSans(
         color: textColor,
         fontSize: fontSize,
@@ -25,4 +27,3 @@ class Description extends StatelessWidget {
     );
   }
 }
-

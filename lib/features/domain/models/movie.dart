@@ -11,6 +11,7 @@ class MovieModel with _$MovieModel {
     @JsonKey(name: 'original_title') required String title,
     @JsonKey(name: 'release_date') required String release,
     @JsonKey(name: 'overview') required String description,
+    @JsonKey(name: 'poster_path') required String posterPath,
   }) = _MovieModel;
 
   factory MovieModel.fromJson(Map<String, Object?> json) =>

@@ -16,6 +16,7 @@ class MoviesRepository {
         title: movieDto.originalTitle,
         release: movieDto.releaseDate,
         description: movieDto.overview,
+        posterPath: movieDto.posterPath,
       );
     }).toList();
     return movies;
@@ -33,6 +34,7 @@ class MoviesRepository {
         title: movieDto.originalTitle,
         release: movieDto.releaseDate,
         description: movieDto.overview,
+         posterPath: movieDto.posterPath,
       );
     }).toList();
     return movies;

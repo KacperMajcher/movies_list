@@ -4,12 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_list/app/injection_container.dart';
 import 'package:movies_list/core/enums.dart';
 import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
-import 'package:movies_list/features/presentation/widgets/card/movie_card.dart';
+import 'package:movies_list/features/presentation/widgets/card/movie_card/movie_card.dart';
+import 'package:movies_list/features/presentation/widgets/card/small_movie_card/small_movie_card.dart';
 import 'package:movies_list/features/presentation/widgets/filter_by_year.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool _isSmallCard = true;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -55,9 +62,13 @@ class HomePage extends StatelessWidget {
               return ListView(
                 children: [
                   for (final movieModel in state.movieModel)
-                    MovieCard(
-                      movieModel: movieModel,
-                    ),
+                    _isSmallCard
+                        ? MovieCard(
+                            movieModel: movieModel,
+                          )
+                        : SmallMovieCard(
+                            movieModel: movieModel,
+                          )
                 ],
               );
             }
@@ -82,6 +93,17 @@ class HomePage extends StatelessWidget {
             ),
           ),
           const Spacer(),
+          IconButton(
+            icon: const Icon(
+              Icons.format_size,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              setState(() {
+                _isSmallCard = !_isSmallCard;
+              });
+            },
+          ),
           const FilterByYear(),
         ],
       ),

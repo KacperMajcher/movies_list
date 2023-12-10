@@ -29,6 +29,8 @@ mixin _$MovieModel {
   String get release => throw _privateConstructorUsedError;
   @JsonKey(name: 'overview')
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poster_path')
+  String get posterPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +49,8 @@ abstract class $MovieModelCopyWith<$Res> {
       @JsonKey(name: 'backdrop_path') String cover,
       @JsonKey(name: 'original_title') String title,
       @JsonKey(name: 'release_date') String release,
-      @JsonKey(name: 'overview') String description});
+      @JsonKey(name: 'overview') String description,
+      @JsonKey(name: 'poster_path') String posterPath});
 }
 
 /// @nodoc
@@ -68,6 +71,7 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
     Object? title = null,
     Object? release = null,
     Object? description = null,
+    Object? posterPath = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -90,6 +94,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      posterPath: null == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -107,7 +115,8 @@ abstract class _$$MovieModelImplCopyWith<$Res>
       @JsonKey(name: 'backdrop_path') String cover,
       @JsonKey(name: 'original_title') String title,
       @JsonKey(name: 'release_date') String release,
-      @JsonKey(name: 'overview') String description});
+      @JsonKey(name: 'overview') String description,
+      @JsonKey(name: 'poster_path') String posterPath});
 }
 
 /// @nodoc
@@ -126,6 +135,7 @@ class __$$MovieModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? release = null,
     Object? description = null,
+    Object? posterPath = null,
   }) {
     return _then(_$MovieModelImpl(
       id: null == id
@@ -148,6 +158,10 @@ class __$$MovieModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      posterPath: null == posterPath
+          ? _value.posterPath
+          : posterPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -160,7 +174,8 @@ class _$MovieModelImpl implements _MovieModel {
       @JsonKey(name: 'backdrop_path') required this.cover,
       @JsonKey(name: 'original_title') required this.title,
       @JsonKey(name: 'release_date') required this.release,
-      @JsonKey(name: 'overview') required this.description});
+      @JsonKey(name: 'overview') required this.description,
+      @JsonKey(name: 'poster_path') required this.posterPath});
 
   factory _$MovieModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieModelImplFromJson(json);
@@ -179,10 +194,13 @@ class _$MovieModelImpl implements _MovieModel {
   @override
   @JsonKey(name: 'overview')
   final String description;
+  @override
+  @JsonKey(name: 'poster_path')
+  final String posterPath;
 
   @override
   String toString() {
-    return 'MovieModel(id: $id, cover: $cover, title: $title, release: $release, description: $description)';
+    return 'MovieModel(id: $id, cover: $cover, title: $title, release: $release, description: $description, posterPath: $posterPath)';
   }
 
   @override
@@ -195,13 +213,15 @@ class _$MovieModelImpl implements _MovieModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.release, release) || other.release == release) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.posterPath, posterPath) ||
+                other.posterPath == posterPath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, cover, title, release, description);
+  int get hashCode => Object.hash(
+      runtimeType, id, cover, title, release, description, posterPath);
 
   @JsonKey(ignore: true)
   @override
@@ -223,7 +243,8 @@ abstract class _MovieModel implements MovieModel {
           @JsonKey(name: 'backdrop_path') required final String cover,
           @JsonKey(name: 'original_title') required final String title,
           @JsonKey(name: 'release_date') required final String release,
-          @JsonKey(name: 'overview') required final String description}) =
+          @JsonKey(name: 'overview') required final String description,
+          @JsonKey(name: 'poster_path') required final String posterPath}) =
       _$MovieModelImpl;
 
   factory _MovieModel.fromJson(Map<String, dynamic> json) =
@@ -243,6 +264,9 @@ abstract class _MovieModel implements MovieModel {
   @override
   @JsonKey(name: 'overview')
   String get description;
+  @override
+  @JsonKey(name: 'poster_path')
+  String get posterPath;
   @override
   @JsonKey(ignore: true)
   _$$MovieModelImplCopyWith<_$MovieModelImpl> get copyWith =>
