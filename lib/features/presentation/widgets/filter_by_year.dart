@@ -15,6 +15,7 @@ class FilterByYearState extends State<FilterByYear> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+        color: const Color.fromARGB(255, 53, 53, 51),
         initialValue: selectedYear,
         onSelected: (String newValue) {
           setState(() {
@@ -31,7 +32,7 @@ class FilterByYearState extends State<FilterByYear> {
                 value: value,
                 child: Text(
                   value,
-                  style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.white),
                 ),
               );
             },
