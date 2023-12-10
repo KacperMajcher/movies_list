@@ -13,11 +13,15 @@ class HomeCubit extends Cubit<HomeState> {
   final MoviesRepository moviesRepository;
 
   //function retrieves an movie model and emits it as a state.
-  Future<void> getMoviesModels() async {
+  Future<void> getMoviesModels(String year) async {
     emit(HomeState());
     try {
-      final movieModel = await moviesRepository.getMoviesData();
-
+      List<MovieModel> movieModel;
+      if (year == 'All') {
+        movieModel = await moviesRepository.getMoviesData();
+      } else {
+        movieModel = await moviesRepository.getMoviesDataByYear(year);
+      }
       emit(
         HomeState(
           movieModel: movieModel,

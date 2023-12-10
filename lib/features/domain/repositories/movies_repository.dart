@@ -20,4 +20,21 @@ class MoviesRepository {
     }).toList();
     return movies;
   }
+
+  Future<List<MovieModel>> getMoviesDataByYear(String year) async {
+    final MovieResponseDto response = await remoteDataSource.getMoviesData();
+
+    final List<MovieModel> movies = response.results.where((movieDto) {
+      return movieDto.releaseDate.startsWith(year);
+    }).map((movieDto) {
+      return MovieModel(
+        id: movieDto.id.toString(),
+        cover: movieDto.backdropPath,
+        title: movieDto.originalTitle,
+        release: movieDto.releaseDate,
+        description: movieDto.overview,
+      );
+    }).toList();
+    return movies;
+  }
 }

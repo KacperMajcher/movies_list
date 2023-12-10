@@ -1,68 +1,90 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_list/app/injection_container.dart';
 import 'package:movies_list/core/enums.dart';
 import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
 import 'package:movies_list/features/presentation/widgets/card/movie_card.dart';
+import 'package:movies_list/features/presentation/widgets/filter_by_year.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {
-        if (state.status == Status.error) {
-          final errorMessage = state.errorMessage ?? 'Unkown error';
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(errorMessage),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }
-      },
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: const Color(0xE7161515),
-          appBar: appBar(),
-          body: ListView(
-            children: [
-              for (final movieModel in state
-                  .movieModel) //For each movie model in the mocked data source, it creates a movie card on the home page
-                MovieCard(
-                  movieModel: movieModel,
-                ),
-            ],
-          ),
-        );
-      },
+    return BlocProvider(
+      create: (context) =>
+          HomeCubit(moviesRepository: getIt())..getMoviesModels('All'),
+      child: Scaffold(
+        backgroundColor: const Color(0xE7161515),
+        appBar: appBar(),
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            if (state.status == Status.error) {
+              final errorMessage = state.errorMessage ?? 'Unkown error';
+              return SnackBar(
+                content: Text(errorMessage),
+                backgroundColor: Colors.red,
+              );
+            } else if (state.movieModel.isEmpty) {
+              return Center(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'There is nothing here',
+                        style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Soon, the relevant items will appear here!',
+                        style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ]),
+              );
+            } else {
+              return ListView(
+                children: [
+                  for (final movieModel in state.movieModel)
+                    MovieCard(
+                      movieModel: movieModel,
+                    ),
+                ],
+              );
+            }
+          },
+        ),
+      ),
     );
   }
-}
 
-AppBar appBar() {
-  return AppBar(
-    automaticallyImplyLeading: false,
-    elevation: 0,
-    backgroundColor: Colors.transparent,
-    title: Row(
-      children: [
-        Text(
-          'Movies',
-          style: GoogleFonts.openSans(
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
+  AppBar appBar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      title: Row(
+        children: [
+          Text(
+            'Movies',
+            style: GoogleFonts.openSans(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
           ),
-        ),
-        const Spacer(),
-        IconButton(
-          onPressed: () {
-            // implement items filter
-          },
-          icon: const Icon(Icons.search, size: 27, color: Colors.white),
-        ),
-      ],
-    ),
-  );
+          const Spacer(),
+          const FilterByYear(),
+        ],
+      ),
+    );
+  }
 }
