@@ -14,7 +14,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   //function retrieves an movie model and emits it as a state.
   Future<void> getMoviesModels(String year) async {
-    emit(HomeState());
+    emit(HomeState(status: Status.loading));
     try {
       List<MovieModel> movieModel;
       if (year == 'All') {
@@ -24,6 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
       }
       emit(
         HomeState(
+          status: Status.success,
           movieModel: movieModel,
         ),
       );
