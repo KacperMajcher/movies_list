@@ -29,7 +29,7 @@ This application displays a list of movies fetched from an external API. It has 
 
 # App Preview
 
-https://github.com/KacperMajcher/movies_list/assets/142928291/7e0d939e-ee2e-47c9-b357-af9383bb77c1
+https://github.com/KacperMajcher/movies_list/assets/142928291/de75061e-a904-45d0-886a-d8b0ef0b89f9
 
 <h3 align="left">Connect with me:</h3>
 
