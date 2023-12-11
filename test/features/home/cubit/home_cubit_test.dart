@@ -60,7 +60,7 @@ void main() {
             return sut;
           },
           act: (cubit) {
-            cubit.getMoviesModels('All');
+            cubit.getAllMoviesModels();
           },
           expect: () => [
                 HomeState(status: Status.loading),
@@ -78,7 +78,7 @@ void main() {
         return sut;
       },
       act: (cubit) {
-        cubit.getMoviesModels('All');
+        cubit.getAllMoviesModels();
       },
       expect: () => [
         HomeState(status: Status.loading),
@@ -98,7 +98,7 @@ void main() {
           return sut;
         },
         act: (cubit) {
-          cubit.getMoviesModels('2023');
+          cubit.getMoviesModelsByYear(2023);
         },
         expect: () => [
           HomeState(status: Status.loading),
@@ -117,7 +117,7 @@ void main() {
           return sut;
         },
         act: (cubit) {
-          cubit.getMoviesModels('2023');
+          cubit.getMoviesModelsByYear(2023);
         },
         expect: () => [
           HomeState(status: Status.loading),

@@ -19,9 +19,12 @@ class FilterByYearState extends State<FilterByYear> {
         initialValue: selectedYear,
         onSelected: (String newValue) {
           setState(() {
-            selectedYear = newValue; //changes displayed year value
-            context.read<HomeCubit>().getMoviesModels(
-                selectedYear); //calling getMoviesModels and passing selectedYear as argument
+            selectedYear = newValue; 
+            if (newValue == 'All') {
+              context.read<HomeCubit>().getAllMoviesModels();
+            } else {
+              context.read<HomeCubit>().getMoviesModelsByYear(int.parse(newValue));
+            }
           });
         },
         itemBuilder: (BuildContext context) {

@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          HomeCubit(moviesRepository: getIt())..getMoviesModels('All'),
+          HomeCubit(moviesRepository: getIt())..getAllMoviesModels(),
       child: Scaffold(
         backgroundColor: const Color(0xE7161515),
         appBar: appBar(),
