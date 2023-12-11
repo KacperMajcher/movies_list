@@ -35,8 +35,14 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.baseUrl,
       instanceName: 'BaseUrl',
     );
-    gh.lazySingleton<_i3.Dio>(
-        () => registerModule.dio(gh<String>(instanceName: 'BaseUrl')));
+    gh.factory<String>(
+      () => registerModule.apiKey,
+      instanceName: 'ApiKey',
+    );
+    gh.lazySingleton<_i3.Dio>(() => registerModule.dio(
+          gh<String>(instanceName: 'BaseUrl'),
+          gh<String>(instanceName: 'ApiKey'),
+        ));
     gh.factory<_i4.MoviesRemoteRetrofitDataSource>(
         () => _i4.MoviesRemoteRetrofitDataSource(gh<_i3.Dio>()));
     gh.factory<_i5.MoviesRepository>(() => _i5.MoviesRepository(

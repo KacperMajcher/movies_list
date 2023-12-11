@@ -33,7 +33,7 @@ class _MoviesRemoteRetrofitDataSource
     )
             .compose(
               _dio.options,
-              '/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&api_key=bcb3e9eb9e85d0415e3c55f0d8339031',
+              '/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc',
               queryParameters: queryParameters,
               data: _data,
             )

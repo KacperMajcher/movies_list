@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_list/core/config.dart';
 import 'package:movies_list/features/presentation/pages/presentation_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -6,9 +7,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PresentationPage(),
-      debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      home: const PresentationPage(),
+      debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
     );
   }
 }
