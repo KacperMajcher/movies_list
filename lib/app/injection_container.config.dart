@@ -16,7 +16,7 @@ import 'package:movies_list/features/data/data_sources/movies_remote_data_source
     as _i4;
 import 'package:movies_list/features/domain/repositories/movies_repository.dart'
     as _i5;
-import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart'
+import 'package:movies_list/features/presentation/pages/cubit/presentation_cubit.dart'
     as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -41,8 +41,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i4.MoviesRemoteRetrofitDataSource(gh<_i3.Dio>()));
     gh.factory<_i5.MoviesRepository>(() => _i5.MoviesRepository(
         remoteDataSource: gh<_i4.MoviesRemoteRetrofitDataSource>()));
-    gh.factory<_i6.HomeCubit>(
-        () => _i6.HomeCubit(moviesRepository: gh<_i5.MoviesRepository>()));
+    gh.factory<_i6.PresentationCubit>(() =>
+        _i6.PresentationCubit(moviesRepository: gh<_i5.MoviesRepository>()));
     return this;
   }
 }

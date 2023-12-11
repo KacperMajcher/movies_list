@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_cubit.dart';
+part of 'presentation_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$PresentationState {
   List<MovieModel> get movieModel => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
+  $PresentationStateCopyWith<PresentationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract class $PresentationStateCopyWith<$Res> {
+  factory $PresentationStateCopyWith(
+          PresentationState value, $Res Function(PresentationState) then) =
+      _$PresentationStateCopyWithImpl<$Res, PresentationState>;
   @useResult
   $Res call({List<MovieModel> movieModel, Status status, String? errorMessage});
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$PresentationStateCopyWithImpl<$Res, $Val extends PresentationState>
+    implements $PresentationStateCopyWith<$Res> {
+  _$PresentationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,22 +69,22 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$HomeStateImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
-  factory _$$HomeStateImplCopyWith(
-          _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
-      __$$HomeStateImplCopyWithImpl<$Res>;
+abstract class _$$PresentationStateImplCopyWith<$Res>
+    implements $PresentationStateCopyWith<$Res> {
+  factory _$$PresentationStateImplCopyWith(_$PresentationStateImpl value,
+          $Res Function(_$PresentationStateImpl) then) =
+      __$$PresentationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<MovieModel> movieModel, Status status, String? errorMessage});
 }
 
 /// @nodoc
-class __$$HomeStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$HomeStateImpl>
-    implements _$$HomeStateImplCopyWith<$Res> {
-  __$$HomeStateImplCopyWithImpl(
-      _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
+class __$$PresentationStateImplCopyWithImpl<$Res>
+    extends _$PresentationStateCopyWithImpl<$Res, _$PresentationStateImpl>
+    implements _$$PresentationStateImplCopyWith<$Res> {
+  __$$PresentationStateImplCopyWithImpl(_$PresentationStateImpl _value,
+      $Res Function(_$PresentationStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +94,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$HomeStateImpl(
+    return _then(_$PresentationStateImpl(
       movieModel: null == movieModel
           ? _value._movieModel
           : movieModel // ignore: cast_nullable_to_non_nullable
@@ -112,8 +113,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HomeStateImpl implements _HomeState {
-  _$HomeStateImpl(
+class _$PresentationStateImpl implements _PresentationState {
+  _$PresentationStateImpl(
       {final List<MovieModel> movieModel = const [],
       this.status = Status.initial,
       this.errorMessage})
@@ -136,14 +137,14 @@ class _$HomeStateImpl implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(movieModel: $movieModel, status: $status, errorMessage: $errorMessage)';
+    return 'PresentationState(movieModel: $movieModel, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HomeStateImpl &&
+            other is _$PresentationStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._movieModel, _movieModel) &&
             (identical(other.status, status) || other.status == status) &&
@@ -158,15 +159,16 @@ class _$HomeStateImpl implements _HomeState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
+  _$$PresentationStateImplCopyWith<_$PresentationStateImpl> get copyWith =>
+      __$$PresentationStateImplCopyWithImpl<_$PresentationStateImpl>(
+          this, _$identity);
 }
 
-abstract class _HomeState implements HomeState {
-  factory _HomeState(
+abstract class _PresentationState implements PresentationState {
+  factory _PresentationState(
       {final List<MovieModel> movieModel,
       final Status status,
-      final String? errorMessage}) = _$HomeStateImpl;
+      final String? errorMessage}) = _$PresentationStateImpl;
 
   @override
   List<MovieModel> get movieModel;
@@ -176,6 +178,6 @@ abstract class _HomeState implements HomeState {
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
+  _$$PresentationStateImplCopyWith<_$PresentationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

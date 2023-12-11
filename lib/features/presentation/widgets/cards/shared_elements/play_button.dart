@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_list/features/presentation/widgets/card/shared_elements/button_row.dart';
+import 'package:movies_list/features/presentation/widgets/cards/shared_elements/button_row.dart';
 
 class PlayButton extends StatelessWidget {
   const PlayButton({super.key, required this.backgroundColor, required this.textColor});

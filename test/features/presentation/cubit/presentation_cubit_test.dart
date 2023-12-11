@@ -4,17 +4,17 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movies_list/core/enums.dart';
 import 'package:movies_list/features/domain/models/movie.dart';
 import 'package:movies_list/features/domain/repositories/movies_repository.dart';
-import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
+import 'package:movies_list/features/presentation/pages/cubit/presentation_cubit.dart';
 
 class MockRepository extends Mock implements MoviesRepository {}
 
 void main() {
-  late HomeCubit sut;
+  late PresentationCubit sut;
   late MockRepository moviesRepository;
 
   setUp(() {
     moviesRepository = MockRepository();
-    sut = HomeCubit(moviesRepository: moviesRepository);
+    sut = PresentationCubit(moviesRepository: moviesRepository);
   });
 
   const testItems = [
@@ -52,7 +52,7 @@ void main() {
   const testErrorMessage = 'Exception: error';
   group('getMoviesModels', () {
     group('getMoviesData()', () {
-      blocTest<HomeCubit, HomeState>(
+      blocTest<PresentationCubit, PresentationState>(
           'emits Status.loading, then Status.success with movie items',
           build: () {
             when(() => moviesRepository.getMoviesData())
@@ -63,14 +63,15 @@ void main() {
             cubit.getAllMoviesModels();
           },
           expect: () => [
-                HomeState(status: Status.loading),
-                HomeState(status: Status.success, movieModel: testItems),
+                PresentationState(status: Status.loading),
+                PresentationState(
+                    status: Status.success, movieModel: testItems),
               ],
           verify: (_) {
             verify(() => moviesRepository.getMoviesData()).called(1);
           });
     });
-    blocTest<HomeCubit, HomeState>(
+    blocTest<PresentationCubit, PresentationState>(
       'emits Status.loading, then Status.error on error',
       build: () {
         when(() => moviesRepository.getMoviesData())
@@ -81,8 +82,8 @@ void main() {
         cubit.getAllMoviesModels();
       },
       expect: () => [
-        HomeState(status: Status.loading),
-        HomeState(
+        PresentationState(status: Status.loading),
+        PresentationState(
           status: Status.error,
           errorMessage: testErrorMessage,
         ),
@@ -90,7 +91,7 @@ void main() {
     );
 
     group('getMoviesDataByYear()', () {
-      blocTest<HomeCubit, HomeState>(
+      blocTest<PresentationCubit, PresentationState>(
         'emits Status.loading, then Status.success with movie items when year is not "All"',
         build: () {
           when(() => moviesRepository.getMoviesDataByYear(any()))
@@ -101,15 +102,15 @@ void main() {
           cubit.getMoviesModelsByYear(2023);
         },
         expect: () => [
-          HomeState(status: Status.loading),
-          HomeState(status: Status.success, movieModel: testItems),
+          PresentationState(status: Status.loading),
+          PresentationState(status: Status.success, movieModel: testItems),
         ],
         verify: (_) {
           verify(() => moviesRepository.getMoviesDataByYear('2023')).called(1);
         },
       );
 
-      blocTest<HomeCubit, HomeState>(
+      blocTest<PresentationCubit, PresentationState>(
         'emits Status.loading, then Status.error on error when year is not "All"',
         build: () {
           when(() => moviesRepository.getMoviesDataByYear(any()))
@@ -120,8 +121,8 @@ void main() {
           cubit.getMoviesModelsByYear(2023);
         },
         expect: () => [
-          HomeState(status: Status.loading),
-          HomeState(
+          PresentationState(status: Status.loading),
+          PresentationState(
             status: Status.error,
             errorMessage: testErrorMessage,
           ),

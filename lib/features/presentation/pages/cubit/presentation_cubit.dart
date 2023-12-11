@@ -4,27 +4,28 @@ import 'package:movies_list/core/enums.dart';
 import 'package:movies_list/features/domain/models/movie.dart';
 import 'package:movies_list/features/domain/repositories/movies_repository.dart';
 
-part 'home_state.dart';
-part 'home_cubit.freezed.dart';
+part 'presentation_state.dart';
+part 'presentation_cubit.freezed.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit({required this.moviesRepository}) : super(HomeState());
+class PresentationCubit extends Cubit<PresentationState> {
+  PresentationCubit({required this.moviesRepository})
+      : super(PresentationState());
 
   final MoviesRepository moviesRepository;
 
   Future<void> getAllMoviesModels() async {
-    emit(HomeState(status: Status.loading));
+    emit(PresentationState(status: Status.loading));
     try {
       List<MovieModel> movieModel = await moviesRepository.getMoviesData();
       emit(
-        HomeState(
+        PresentationState(
           status: Status.success,
           movieModel: movieModel,
         ),
       );
     } catch (error) {
       emit(
-        HomeState(
+        PresentationState(
           status: Status.error,
           errorMessage: error.toString(),
         ),
@@ -33,19 +34,19 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> getMoviesModelsByYear(int year) async {
-    emit(HomeState(status: Status.loading));
+    emit(PresentationState(status: Status.loading));
     try {
       List<MovieModel> movieModel =
           await moviesRepository.getMoviesDataByYear(year.toString());
       emit(
-        HomeState(
+        PresentationState(
           status: Status.success,
           movieModel: movieModel,
         ),
       );
     } catch (error) {
       emit(
-        HomeState(
+        PresentationState(
           status: Status.error,
           errorMessage: error.toString(),
         ),

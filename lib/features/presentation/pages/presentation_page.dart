@@ -3,25 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_list/app/injection_container.dart';
 import 'package:movies_list/core/enums.dart';
-import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
-import 'package:movies_list/features/presentation/widgets/card/movie_card/movie_card.dart';
-import 'package:movies_list/features/presentation/widgets/card/small_movie_card/small_movie_card.dart';
+import 'package:movies_list/features/presentation/pages/cubit/presentation_cubit.dart';
+import 'package:movies_list/features/presentation/widgets/cards/movie_card/movie_card.dart';
+import 'package:movies_list/features/presentation/widgets/cards/small_movie_card/small_movie_card.dart';
 import 'package:movies_list/features/presentation/widgets/my_app_bar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class PresentationPage extends StatefulWidget {
+  const PresentationPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<PresentationPage> createState() => _PresentationPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _PresentationPageState extends State<PresentationPage> {
   bool _isSmallCard = true;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          HomeCubit(moviesRepository: getIt())..getAllMoviesModels(),
+          PresentationCubit(moviesRepository: getIt())..getAllMoviesModels(),
       child: Scaffold(
         backgroundColor: const Color(0xE7161515),
         appBar: MyAppBar(
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             });
           },
         ),
-        body: BlocBuilder<HomeCubit, HomeState>(
+        body: BlocBuilder<PresentationCubit, PresentationState>(
           builder: (context, state) {
             if (state.status == Status.error) {
               final errorMessage = state.errorMessage ?? 'Unkown error';

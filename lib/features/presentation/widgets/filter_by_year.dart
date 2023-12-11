@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
+import 'package:movies_list/features/presentation/pages/cubit/presentation_cubit.dart';
 
 class FilterByYear extends StatefulWidget {
   const FilterByYear({Key? key}) : super(key: key);
@@ -19,11 +19,13 @@ class FilterByYearState extends State<FilterByYear> {
         initialValue: selectedYear,
         onSelected: (String newValue) {
           setState(() {
-            selectedYear = newValue; 
+            selectedYear = newValue;
             if (newValue == 'All') {
-              context.read<HomeCubit>().getAllMoviesModels();
+              context.read<PresentationCubit>().getAllMoviesModels();
             } else {
-              context.read<HomeCubit>().getMoviesModelsByYear(int.parse(newValue));
+              context
+                  .read<PresentationCubit>()
+                  .getMoviesModelsByYear(int.parse(newValue));
             }
           });
         },

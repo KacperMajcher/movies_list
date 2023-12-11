@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies_list/features/domain/models/movie.dart';
-import 'package:movies_list/features/presentation/widgets/card/shared_elements/description.dart';
-import 'package:movies_list/features/presentation/widgets/card/shared_elements/movie_release.dart';
-import 'package:movies_list/features/presentation/widgets/card/shared_elements/movie_title.dart';
-import 'package:movies_list/features/presentation/widgets/card/shared_elements/play_button.dart';
-import 'package:movies_list/features/presentation/widgets/card/small_movie_card/elements/poster.dart';
+import 'package:movies_list/features/presentation/widgets/cards/shared_elements/description.dart';
+import 'package:movies_list/features/presentation/widgets/cards/shared_elements/movie_release.dart';
+import 'package:movies_list/features/presentation/widgets/cards/shared_elements/movie_title.dart';
+import 'package:movies_list/features/presentation/widgets/cards/shared_elements/play_button.dart';
+import 'package:movies_list/features/presentation/widgets/cards/small_movie_card/poster.dart';
 
 class SmallMovieCard extends StatelessWidget {
   const SmallMovieCard({
