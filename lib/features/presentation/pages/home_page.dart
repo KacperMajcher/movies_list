@@ -6,7 +6,7 @@ import 'package:movies_list/core/enums.dart';
 import 'package:movies_list/features/presentation/pages/cubit/home_cubit.dart';
 import 'package:movies_list/features/presentation/widgets/card/movie_card/movie_card.dart';
 import 'package:movies_list/features/presentation/widgets/card/small_movie_card/small_movie_card.dart';
-import 'package:movies_list/features/presentation/widgets/filter_by_year.dart';
+import 'package:movies_list/features/presentation/widgets/my_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,7 +24,14 @@ class _HomePageState extends State<HomePage> {
           HomeCubit(moviesRepository: getIt())..getAllMoviesModels(),
       child: Scaffold(
         backgroundColor: const Color(0xE7161515),
-        appBar: appBar(),
+        appBar: MyAppBar(
+          isSmallCard: _isSmallCard,
+          onCardSizeChanged: (value) {
+            setState(() {
+              _isSmallCard = value;
+            });
+          },
+        ),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state.status == Status.error) {
@@ -74,38 +81,6 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
-      ),
-    );
-  }
-
-  AppBar appBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      title: Row(
-        children: [
-          Text(
-            'Movies',
-            style: GoogleFonts.openSans(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const Spacer(),
-          IconButton(
-            icon: const Icon(
-              Icons.format_size,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              setState(() {
-                _isSmallCard = !_isSmallCard;
-              });
-            },
-          ),
-          const FilterByYear(),
-        ],
       ),
     );
   }
