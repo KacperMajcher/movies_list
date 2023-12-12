@@ -20,8 +20,7 @@ class _PresentationPageState extends State<PresentationPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          PresentationCubit(moviesRepository: getIt())..getAllMoviesModels(),
+      create: (context) => getIt<PresentationCubit>()..getAllMoviesModels(),
       child: Scaffold(
         backgroundColor: const Color(0xE7161515),
         appBar: MyAppBar(
