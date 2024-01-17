@@ -33,5 +33,5 @@ https://github.com/KacperMajcher/movies_list/assets/142928291/de75061e-a904-45d0
 
 <h3 align="left">Connect with me:</h3>
 
- kacpermajcher13@gmail.com
+ dev.kacpermajcher@gmail.com
 
