@@ -19,6 +19,8 @@ class _PresentationPageState extends State<PresentationPage> {
   bool _isSmallCard = true;
   @override
   Widget build(BuildContext context) {
+    final double dh = MediaQuery.of(context).size.height;
+
     return BlocProvider(
       create: (context) => getIt<PresentationCubit>()..getAllMoviesModels(),
       child: Scaffold(
@@ -49,17 +51,15 @@ class _PresentationPageState extends State<PresentationPage> {
                         'There is nothing here',
                         style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 25,
+                            fontSize: dh * .04,
                             fontWeight: FontWeight.w700),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: dh * .012),
                       Text(
                         'Soon, the relevant items will appear here!',
                         style: GoogleFonts.poppins(
                             color: Colors.grey,
-                            fontSize: 15,
+                            fontSize: dh * .018,
                             fontWeight: FontWeight.w500),
                       ),
                     ]),
