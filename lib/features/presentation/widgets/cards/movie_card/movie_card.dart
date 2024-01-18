@@ -16,17 +16,21 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dw = MediaQuery.of(context).size.width;
+    final double dh = MediaQuery.of(context).size.height;
+    
     return Padding(
-      padding: const EdgeInsets.all(13.0),
+      padding:
+          EdgeInsets.symmetric(vertical: dh * .0155, horizontal: dw * .032),
       child: Column(
         children: [
           Stack(
             children: [
               Container(
-                height: 430,
+                height: dh * .51,
                 decoration: BoxDecoration(
                   color: Colors.black,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(dh * .014),
                 ),
               ),
               Column(
@@ -35,45 +39,45 @@ class MovieCard extends StatelessWidget {
                 children: [
                   Cover(
                     cover: movieModel.cover,
-                    borderRadiusValue: 12,
+                    borderRadiusValue: dh * .014,
                   ),
-                  const SizedBox(height: 13),
+                  SizedBox(height: dh * .0155),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: dw * .024),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(width: 10),
+                        SizedBox(width: dw * .024),
                         MovieTitle(
                           title: movieModel.title,
-                          fontSize: 25,
+                          fontSize: dh * .03,
                         ),
-                        const SizedBox(height: 1),
+                        SizedBox(height: dh * .001),
                         MovieRelease(
                           release: movieModel.release,
-                          fontSize: 12,
+                          fontSize: dh * .014,
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: dh * .006),
                         Description(
                             description: movieModel.description,
-                            textColor: const Color.fromARGB(255, 165, 153, 153),
-                            fontSize: 14,
+                            textColor: const Color(0xFFA59999),
+                            fontSize: dh * .017,
                             maxLines: 3),
-                        const SizedBox(height: 20),
+                        SizedBox(height: dh * .024),
                         Row(
                           children: [
                             const PlayButton(
                               backgroundColor: Color(0xFF434141),
                               textColor: Colors.white,
                             ),
-                            const Expanded(child: SizedBox()),
+                            const Spacer(),
                             IconButton(
                               onPressed: () {},
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.info_outline,
                                 color: Colors.white,
-                                size: 30,
+                                size: dh * .035,
                               ),
                             ),
                           ],

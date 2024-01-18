@@ -14,20 +14,23 @@ class ButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dw = MediaQuery.of(context).size.width;
+    final double dh = MediaQuery.of(context).size.height;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, size: 23, color: iconColor),
-        const SizedBox(width: 3),
+        Icon(icon, size: dh * .027, color: iconColor),
+        SizedBox(width: dw * .007),
         Text(
           text,
           style: GoogleFonts.openSans(
             color: iconColor,
-            fontSize: 16,
+            fontSize: dh * .019,
             fontWeight: FontWeight.w700,
           ),
         ),
-        const SizedBox(width: 3),
+        SizedBox(width: dw * .007),
       ],
     );
   }

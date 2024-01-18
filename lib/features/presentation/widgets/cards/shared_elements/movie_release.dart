@@ -13,13 +13,15 @@ class MovieRelease extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dw = MediaQuery.of(context).size.width;
+
     return Text(
       release,
       style: GoogleFonts.openSans(
         fontSize: fontSize,
         color: Colors.white,
         fontWeight: FontWeight.w400,
-        letterSpacing: 1,
+        letterSpacing: dw * .0025,
       ),
     );
   }
