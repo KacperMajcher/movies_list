@@ -12,13 +12,15 @@ class MovieTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dw = MediaQuery.of(context).size.width;
+
     return Text(
       title,
       style: TextStyle(
         fontSize: fontSize,
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        letterSpacing: 1,
+        letterSpacing: dw * .0025,
       ),
       overflow: TextOverflow.ellipsis,
     );

@@ -16,17 +16,20 @@ class SmallMovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dw = MediaQuery.of(context).size.width;
+    final double dh = MediaQuery.of(context).size.height;
+
     return Padding(
-      padding: const EdgeInsets.all(13.0),
+      padding: EdgeInsets.all(dh * .0155),
       child: Row(
         children: [
           Expanded(
             child: Poster(
               posterPath: movieModel.posterPath,
-              borderRadiusValue: 12,
+              borderRadiusValue: dh * .015,
             ),
           ),
-          const SizedBox(width: 13),
+          SizedBox(width: dw * .032),
           Expanded(
             flex: 2,
             child: Column(
@@ -35,34 +38,34 @@ class SmallMovieCard extends StatelessWidget {
               children: [
                 MovieTitle(
                   title: movieModel.title,
-                  fontSize: 20,
+                  fontSize: dh * .024,
                 ),
-                const SizedBox(height: 1),
+                SizedBox(height: dh * .001),
                 MovieRelease(
                   release: movieModel.release,
-                  fontSize: 12,
+                  fontSize: dh * .014,
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height: dh * .006),
                 Description(
                   description: movieModel.description,
                   textColor: const Color.fromARGB(255, 165, 153, 153),
-                  fontSize: 13,
+                  fontSize: dh * .0155,
                   maxLines: 4,
                 ),
-                const SizedBox(height: 7),
+                SizedBox(height: dh * .008),
                 Row(
                   children: [
                     const PlayButton(
                       backgroundColor: Color(0xFF434141),
                       textColor: Colors.white,
                     ),
-                    const Expanded(child: SizedBox()),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.info_outline,
                         color: Colors.white,
-                        size: 30,
+                        size: dh * .036,
                       ),
                     ),
                   ],

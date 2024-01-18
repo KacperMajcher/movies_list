@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Cover extends StatelessWidget {
-  const Cover({super.key, required this.cover, required this.borderRadiusValue});
+  const Cover({
+    super.key,
+    required this.cover,
+    required this.borderRadiusValue,
+  });
 
   final String cover;
   final double borderRadiusValue;
 
   @override
   Widget build(BuildContext context) {
+    final double dh = MediaQuery.of(context).size.height;
     return Container(
-      height: 222,
+      height: dh * .26,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(borderRadiusValue),

@@ -9,8 +9,10 @@ class Poster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dh = MediaQuery.of(context).size.height;
+   
     return Container(
-      height: 200,
+      height: dh * .24,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(borderRadiusValue)),
         image: DecorationImage(
