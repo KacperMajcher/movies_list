@@ -11,18 +11,18 @@ class Config {
   static String get baseUrl {
     switch (appFlavor) {
       case Flavor.development:
-        return 'https://api.themoviedb.org/3/discover';
+        return Env.BaseUrl;
       case Flavor.production:
-        return 'https://api.themoviedb.org/3/discover';
+        return Env.BaseUrl;
     }
   }
 
   static String get apiKey {
     switch (appFlavor) {
       case Flavor.development:
-        return Env.KEY1;
+        return Env.ApiKey;
       case Flavor.production:
-        return Env.KEY1;
+        return Env.ApiKey;
     }
   }
 
